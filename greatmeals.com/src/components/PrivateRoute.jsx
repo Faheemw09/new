@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useAuth0 } from "@auth0/auth0-react"
 import { Navigate } from 'react-router-dom'
+import { Cartcontext } from '../context/Context'
 const PrivateRoute = ({children}) => {
-    const { loginWithRedirect,isAuthenticated, logout,user } = useAuth0()
-    if(!isAuthenticated){
+    const { isAuth } = useContext(Cartcontext)
+    if(!isAuth){
         return   <Navigate to="/login"/>
         
         

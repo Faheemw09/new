@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
-import { useState } from 'react';
+import { ReactNode, useContext } from 'react';
+import { useState} from 'react';
 import { useAuth0 } from "@auth0/auth0-react"
-import {Link as Reactlink} from "react-router-dom"
+import {Link as Reactlink, NavLink} from "react-router-dom"
+import { FiShoppingCart } from 'react-icons/fi';
 import {
   Box,
   Flex,
@@ -26,14 +27,21 @@ import {
   InputGroup,
   InputRightAddon,
  Dropdown,
+ Icon,
  
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon,SearchIcon,ChevronDownIcon} from '@chakra-ui/icons';
 
 import Mainlandingpage from './Home';
 import greatmealslogo from "../images/greatmealslogo.jpg"
+import meallogo from "../images/meallogo.png"
+import meals2logo from "../images/meals2logo.png"
+import lifelogo from "../images/lifelogo.png"
+
 import ModalSignup from '../landingpages/ModalSignup';
 import {Link as Reaclink}  from "react-router-dom";
+import { Cartcontext } from '../context/Context';
+import LoginModal from '../landingpages/ModalLogin';
 
 // const NavLink = ({ children }: { children: ReactNode }) => (
 //   <Link
@@ -53,29 +61,41 @@ export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loginWithRedirect,isAuthenticated, logout,user } = useAuth0()
+  const [click,setClick]=useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const Globalstate = useContext(Cartcontext);
+  const state = Globalstate.state;
+  const dispatch = Globalstate.dispatch;
 
-
-  
+  const cartItem=state.reduce((c,i)=>
+    c + i.quantity
+  ,0)
+  const handleAdminButtonClick = () => {
+    setIsLoginModalOpen(true);
+  };
   return (
     <>
-      <Box bg={useColorModeValue('white.100', 'gray.900')} px={4}>
-        <Flex h={16} pl="190px" w={1090} alignItems={'center'} justifyContent={'space-around'}>
-        <Reaclink to="/">  <Box  pr={'19px'}>
-     <img  width="70px" height="70px"  src={greatmealslogo}/>
+      <Box bg={useColorModeValue('white.100', 'white.100')}  alignItems={'center'} px={4} >
+        <Flex h={16}  w={1090} alignItems={'center'} justifyContent={'space-around'}>
+        <Reaclink to="/">  <Box  >
+     <img  width="1000px" height="100%"  src={meallogo}/>
 
           </Box>
           </Reaclink>
           <Box>
-            <InputGroup>
+            {/* <InputGroup>
           <Input placeholder='Search in All india' height="40px" width="400px" HiOutlineSearch  />
           <InputRightAddon  pointerEvents="" bg={"blue.300"}  children={<SearchIcon color="white.300"/>} />
-          </InputGroup>
+          </InputGroup> */}
+               <img  width="1100px" height="700px"  src={lifelogo}/>
           </Box>
           <Box pl="30px">
             {
-               isAuthenticated ?(<Button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+               isAuthenticated ?(<Button    border= "1px solid gold"
+               height= "32px"  backgroundColor="#fcec52" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
                Log Out
-             </Button>):(<Button onClick={() => loginWithRedirect()}>Login/Register</Button>)
+             </Button>):(<Button      border= "1px solid gold"
+                height= "32px" backgroundColor="#fcec52" onClick={() => loginWithRedirect()}>Login/Register</Button>)
             }
        
             
@@ -87,7 +107,7 @@ export default function Navbar() {
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={6} pl={"10px"}>
             <Center>
-              <Button onClick={toggleColorMode}>
+              <Button onClick={toggleColorMode} >
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
               </Center>
@@ -105,10 +125,12 @@ export default function Navbar() {
    
   <Avatar
     size={'sm'}
-    src={''}
+    src={user.profile}
   />
     <Center>
-    <p>Welcome</p>
+    <p style={{fontSize:"8px"}}>
+    {user.name}
+    </p>
   </Center>
 </MenuButton>
                
@@ -136,20 +158,48 @@ export default function Navbar() {
               </Menu>
                 } 
               <Center>
-                <Reactlink to="/postadd">
-              <Button
+              <Reaclink to="/adminpage">
+               <Button
               
                 border= "1px solid gold"
                 height= "30px"
                 width="90px"
-                backgroundColor="#fcec52"
-                color="black"
+                backgroundColor="white"
+             
                fontWeight="bold"
-           
-            >
-              <h5>Post Ad</h5>
-            </Button>
-            </Reactlink>
+              //  onClick={handleAdminButtonClick}
+            > Admin
+              {/* <Button onClick={onOpen} colorScheme='blue' fontSize={"12px"} h={"24px"}>Login</Button> */}
+              {/* {isLoginModalOpen && <LoginModal onClose={() => setIsLoginModalOpen(false)} />} */}
+             {/* { <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)}/>} */}
+          
+           </Button> 
+           </Reaclink>
+            {/* <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)}/>
+            */}
+            <Box
+                label="Add to cart"
+               pl="30px"
+               pt="10px"
+                placement={'top'}
+                // color={'gray.500'}
+                fontSize={'1.2em'}
+            color="red"
+                w="100px"
+                >
+                {/* <chakra.a href={'#'} display={'flex'}> */}
+
+                  < Reactlink to="/cart">
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'}       color={'gray.500'} />
+                   {cartItem}
+                   
+                  
+                  </Reactlink >
+                
+         
+                
+                {/* </chakra.a> */}
+              </Box>  
             </Center>
             </Stack>
           </Flex>
@@ -161,16 +211,22 @@ export default function Navbar() {
       {/* ******************************MENU**************** */}
 
   <HStack  pt={"10px"} pl="200px" w={1090} alignItems={'center'} justifyContent={'space-around'}>
+  
       <Menu >
+    
+  
       <Reaclink to="/food">
   <MenuButton 
  
-    style={{ width: '166px' }} >
+    style={{ width: '166px' }} isDisabled={click==true}>
+      
 
-    <Text  fontSize='15px'>Your Food<ChevronDownIcon /></Text>
+    <Text isDisabled={click==true}  fontWeight={'bold'} fontSize='15px'>|  Your Food</Text>
   
   </MenuButton>
+  
   </Reaclink>
+
   
   </Menu>
   <Menu >
@@ -178,7 +234,7 @@ export default function Navbar() {
   <MenuButton 
  
  style={{ width: '166px' }} >
-<Text fontSize='15px'> Restaurant <ChevronDownIcon /></Text>
+<Text fontSize='15px' fontWeight={'bold'}> |  Restaurant</Text>
 
 
 </MenuButton>
@@ -188,16 +244,16 @@ export default function Navbar() {
 
 <Menu>
 
-<Reaclink to="/cart">
+
 <MenuButton 
  
  style={{ width: '166px' }} >
 
 
- <Text fontSize='13px'> Cart <ChevronDownIcon /></Text>
+ <Text fontSize='15px' fontWeight={'bold'}> |  Recipe</Text>
 
 </MenuButton>
-</Reaclink>
+
 
 </Menu>
 <Menu>
@@ -206,18 +262,8 @@ export default function Navbar() {
  style={{ width: '166px' }} >
 
 
- <Text fontSize='13px'> HOME APPLIANCES <ChevronDownIcon /></Text>
+ <Text fontSize='15px' fontWeight={'bold'}>|  Catering</Text>
 
-</MenuButton>
-
-</Menu>
-<Menu>
-<MenuButton 
- 
- style={{ width: '166px' }} >
-
-
-<Text fontSize='13px'>KIDS & TOYS  <ChevronDownIcon /></Text>
 </MenuButton>
 
 </Menu>
@@ -227,12 +273,21 @@ export default function Navbar() {
  style={{ width: '166px' }} >
 
 
-<Text fontSize='13px'>SPORTS & FASHION <ChevronDownIcon /></Text>
+<Text fontSize='15px' fontWeight={'bold'}>| Gift Cards </Text>
+</MenuButton>
+
+</Menu>
+<Menu>
+<MenuButton 
+ 
+ style={{ width: '166px' }} >
+
+
+<Text fontSize='13px'> </Text>
 
 </MenuButton>
 
 </Menu>
-
 
   
 
@@ -242,7 +297,8 @@ export default function Navbar() {
 
 
 </HStack>
-<Divider  pt={"10px"} color={"grey"} orientation='horizontal' />
+
+<Divider   border={"1px solid grey"}  color={"grey"} orientation='horizontal' mt={"5px"} />
 
 
 

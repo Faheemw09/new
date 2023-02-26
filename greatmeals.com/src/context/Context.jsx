@@ -1,4 +1,4 @@
-import { createContext,  useReducer } from "react";
+import { createContext,  useReducer, useState } from "react";
 
 
 export const  Cartcontext=createContext()
@@ -45,8 +45,22 @@ const Context =({children})=>{
 
     const [state, dispatch] = useReducer(reducer, []);
     const info = { state, dispatch };
+
+  const [isAuth,setisAuth]=useState(true)
+  const [token,setToken]=useState(null)
+const login=(token)=>{
+setisAuth(true)
+setToken(token)
+
+}
+const logout=()=>{
+  setisAuth(false)
+  setToken("")
+  
+  }
+
     return (
-      <Cartcontext.Provider value={info}>{children}</Cartcontext.Provider>
+      <Cartcontext.Provider value={{isAuth,token,login,logout,state, dispatch }}>{children}</Cartcontext.Provider>
     );
 
 

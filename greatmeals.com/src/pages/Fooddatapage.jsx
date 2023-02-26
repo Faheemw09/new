@@ -116,7 +116,7 @@ export const Products = () => {
       {/* <Heading>Products For You</Heading> */}
       <Navbar />
 
-      <Divider border={"0.5px solid gray.600"} mt={"15px"} mb={"15px"} />
+      {/* <Divider border={"0.5px solid gray.600"} mt={"6px"} mb={"15px"} /> */}
 
       {/* <Box w={"1100px"} h={"100%"}  ml={"100px"} display={"grid"} gridTemplateColumns={"repeat(2,0px)"} > */}
 
@@ -124,12 +124,13 @@ export const Products = () => {
       <div
         style={{
           width: "700px",
-          height: "70Px",
+          height: "50Px",
           display: "flex",
-          border: "1px solid #a8b3ab",
+          // border: "1px solid #a8b3ab",
           margin: "auto",
           justifyContent: "space-around",
           alignItems: "center",
+          marginTop:"15px"
         }}
       >
         <div
@@ -155,7 +156,7 @@ export const Products = () => {
             <Button
               isDisabled={order == "desc"}
               onClick={() => setOrder("desc")}
-              bgColor="#ff9914"
+              backgroundColor="#fcec52"
               size="sm"
               value={"desc"}
             >
@@ -165,7 +166,7 @@ export const Products = () => {
             <Button
               isDisabled={order == "asc"}
               onClick={() => setOrder("asc")}
-              bgColor="#ff9914"
+              backgroundColor="#fcec52"
               size="sm"
               value={'asc'}
             >
@@ -185,13 +186,16 @@ export const Products = () => {
             />
             <InputRightAddon
               pointerEvents=""
-              bg={"#ff9914"}
+              backgroundColor="#fcec52"
               children={<SearchIcon color="white.300" />}
             />
           </InputGroup>
         </Box>
+       
       </div>
-      <br />
+
+    
+      <Divider border={"0.5px solid gray.600"} mt={"15px"} mb={"15px"} />
       {loading ? (
         <Spinner   thickness='4px'
         speed='0.65s'
@@ -202,12 +206,12 @@ export const Products = () => {
         <Box
           w={"990px"}
           h={"100%"}
-          gap="30px"
+          gap="10px"
           border={"1px solid #E7EEFF"}
           marginLeft="150px"
           borderRadius={"10px"}
         >
-          <Grid gap={"20px"} gridTemplateColumns="repeat(4,230px)">
+          <Grid gap={"20px"} gridTemplateColumns="repeat(4,230px)" margin={"auto"}>
             {data?.map((ele) => {
               return (
               <GridItem key={ele.id}>
@@ -232,9 +236,9 @@ export const Products = () => {
       <br/>
       <br/>
 <div style={{display:"flex",justifyContent:"space-around", margin:"auto", width:"200px" ,alignItems:"center"}}>
-  <Button   bgColor="#ff9914" isDisabled={page==1} onClick={()=>setPage(page-1)}>prev</Button>
+  <Button   backgroundColor="#fcec52" isDisabled={page==1} onClick={()=>setPage(page-1)}>prev</Button>
   <p>{page}</p>
-  <Button  bgColor="#ff9914" isDisabled={page==lastpage} onClick={()=>setPage(page+1)}>next</Button>
+  <Button  backgroundColor="#fcec52" isDisabled={page==lastpage} onClick={()=>setPage(page+1)}>next</Button>
   </div>
 
       

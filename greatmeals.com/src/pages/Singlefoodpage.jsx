@@ -24,12 +24,15 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../landingpages/Footer";
 import { Cartcontext } from "../context/Context";
+import {Link as Reactlink, NavLink} from "react-router-dom"
+import { useToast } from '@chakra-ui/react'
 
 export const ProductDetail = () => {
   const [data, setData] = useState([]);
   // const [cart,setCart]=useState([])
   const [loading, setLoading] = useState(false);
   // console.log(cart)
+  const [isInCart, setIsInCart] = useState(false);
 
   const { id } = useParams();
   console.log(id);
@@ -70,8 +73,19 @@ export const ProductDetail = () => {
   // }
   const Globalstate = useContext(Cartcontext);
   const dispatch = Globalstate.dispatch
+  const toast=useToast()
   console.log(Globalstate)
-
+  const handleAddToCart = () => {
+    dispatch({ type: "ADD", payload: data });
+    setIsInCart(true);
+    toast({
+      title: '',
+      description: "Item added to cart sucessfully!.",
+      status: 'success',
+      duration: 1000,
+      isClosable: true,
+    })
+  };
 
   const { imgdata, rname,price, address, quantity,somedata, delimg } = data;
   return (
@@ -87,12 +101,13 @@ export const ProductDetail = () => {
         color='blue.500'
         size='xl' />
       ) : (
-        <Container maxW={"7xl"}>
+        <Container maxW={"5xl"}  border={"1px solid gray"} h="450px" w={"1100px"}  rounded={"md"}>
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
-            spacing={{ base: 8, md: 10 }}
-            py={{ base: 18, md: 24 }}
+            spacing={{ base: 2, md: 4 }}
+            py={{ base:3, md: 7 }}
           >
+            <Box>
             <Flex>
               <Image
                 border={"1px solid gray"}
@@ -105,14 +120,15 @@ export const ProductDetail = () => {
                 src={imgdata}
                 fit={"cover"}
                 align={"center"}
-                w={"100%"}
-                h={"80%"}
+                w={"85%"}
+                h={"50%"}
                 // h={{ base: '100%', sm: '400px', lg: '500px' }}
               />
             </Flex>
+            </Box>
             <Stack spacing={{ base: 6, md: 10 }}>
-              <Box border={"1px solid gray"} h="375px">
-                <Box as={"header"} mt={10}>
+              <Box border={"1px solid gray"} h="400px"   rounded={"md"}>
+                <Box as={"header"} mt={6}>
                   <Heading
                     lineHeight={1.1}
                     fontWeight={600}
@@ -125,9 +141,9 @@ export const ProductDetail = () => {
                   <Text
                    
                     fontWeight={300}
-                    fontSize={"5xl"}
-                  > price:₹{price}
-                  quantity{quantity}
+                    fontSize={"4xl"}
+                  > Price:  ₹{price}
+                
                 
                   </Text>
                 </Box>
@@ -154,14 +170,26 @@ export const ProductDetail = () => {
                     <SimpleGrid
                       columns={{ base: 1, md: 2 }}
                       spacing={10}
-                      pl={56}
+                      pl="170px"
+                      pt={"20px"}
                     >
                       <Image h={"40px"} w={"200px"} src={delimg} />
                     </SimpleGrid>
                   </Box>
                 </Stack>
-
+             
+                {/* {isInCart ? (
+        <Link to="/cart">
+          <Button>Go to Cart</button>
+        </Link>
+      ) : (
+        <button onClick={handleAddToCart}>Add to Cart</button>
+      )} */}
+      <Box mt={"39px"}>
+               {isInCart ? (
+                <Reactlink to="/cart">
                 <Button
+
                   rounded={"none"}
                   w={"full"}
                   mt={5}
@@ -169,21 +197,45 @@ export const ProductDetail = () => {
                   py={"7"}
                 
                   textTransform={"uppercase"}
-                  bgColor="#ff9914"
+                  backgroundColor="#fcec52"
                   _hover={{
                     transform: "translateY(2px)",
                     boxShadow: "lg",
                   }}
-                  onClick={() => dispatch({ type: "ADD", payload: data})}
+                 
                 >
-                  Add To Cart
+                  Go to Cart
                 </Button>
+                </Reactlink>
+               ):( 
 
+                <Button
+
+                rounded={"none"}
+                w={"full"}
+                mt={5}
+                size={"lg"}
+                py={"7"}
+              
+                textTransform={"uppercase"}
+                backgroundColor="#fcec52"
+                _hover={{
+                  transform: "translateY(2px)",
+                  boxShadow: "lg",
+                }}
+                onClick={handleAddToCart}
+              >
+               Add To Cart
+              </Button>
+
+               )}
+               </Box>
+               
                 <Stack
                   direction="row"
                   alignItems="center"
                   justifyContent={"center"}
-                  pt={"10px"}
+                  pt={"20px"}
                 >
                   <Text>Get Delivered With In 30min</Text>
                 </Stack>
@@ -191,10 +243,11 @@ export const ProductDetail = () => {
             </Stack>
           </SimpleGrid>
 
-          <Footer />
+         
         </Container>
       )}
       </Box>
+      <Footer />
     </div>
   );
 };

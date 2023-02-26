@@ -6,7 +6,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/8/19657198/2310098025cbe62f00295c99f65da028_featured_v2.jpg",
       "address": "Bopal",
-
       "rating": "3.8"
     },
     {
@@ -15,7 +14,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/4/18560184/8d923ed5ccb999ee0444edafa2c55d8e_featured_v2.jpg",
       "address": "Dehli",
-
       "rating": "4.1"
     },
     {
@@ -24,7 +22,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/9/800089/4b5ab549625bf83b4d2c377881a93412_featured_v2.jpg",
       "address": "Navi Mumbai",
-
       "rating": "4.4"
     },
     {
@@ -33,7 +30,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/3/19678663/0db33245c14222532d95f0e40bb6b156_featured_v2.jpg",
       "address": "Banglore",
-
       "rating": "3.9"
     },
     {
@@ -42,7 +38,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/9/800969/666de2d320ac84efd79e884f578cd31c_featured_v2.jpg",
       "address": "Locknow,UP",
-
       "rating": "4.2"
     },
     {
@@ -51,7 +46,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/0/19021510/095926533d3dd10cb44c48f238e7bb48_featured_v2.jpg",
       "address": "Patna,Bihar",
-
       "rating": "4.0"
     },
     {
@@ -60,7 +54,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/3/18639593/b44feccace075dc9567fa73fd3424e77_featured_v2.jpg",
       "address": "12, M S Lane D S Lane, S P Road,Banglore",
-
       "rating": "4.2"
     },
     {
@@ -69,7 +62,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/7/18611147/dca25e7029d893a2dc9ef908befd4856_featured_v2.jpg",
       "address": "4, Grtptblr-2, Narasimha Jois Lane, Nagarathpet,Banglore",
-
       "rating": "3.9"
     },
     {
@@ -78,7 +70,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/1/19288591/9bdee00da6a50f0dc400ad58f1a423b9_featured_v2.jpg",
       "address": "Mumbai, Maharashtra",
-
       "rating": "3.8"
     },
     {
@@ -87,7 +78,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/4/800074/8a0789fe47d9eabc35643911a0015707_featured_v2.jpg",
       "address": " Banglore,Karnataka",
-
       "rating": "4.7"
     },
     {
@@ -96,7 +86,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/9/801269/cebfdb033a0a31eceb4e4f2ad54af68a_featured_v2.jpg",
       "address": "Banglore,Karnataka",
-
       "rating": "3.9"
     },
     {
@@ -105,7 +94,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/7/18971277/a7523dfa26a7d79b13f597470068695d_featured_v2.jpg",
       "address": "Mumbai, Maharashtra",
-
       "rating": "3.5"
     },
     {
@@ -114,7 +102,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/0/800120/2911d7005a27e8fd3dd1352f55e3221f_featured_v2.jpg",
       "address": "Navi Mumbai",
-
       "rating": "4.2"
     },
     {
@@ -123,7 +110,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/6/800326/58780939ee98196021a081d74b7266ec_featured_v2.jpg",
       "address": " Chennai,Tamil Nadu",
-
       "rating": "4.3"
     },
     {
@@ -132,7 +118,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/7/18576127/43918fc88e5ec3106d710d164e1f54d1_featured_v2.jpg",
       "address": "Locknow,UP",
-
       "rating": "4.0"
     },
     {
@@ -141,7 +126,6 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/7/19642697/ae328d5ca49ac1490a672bcc2a9b0cec_featured_v2.jpg",
       "address": "S P Road,Banglore",
-
       "rating": "3.0"
     },
     {
@@ -150,11 +134,9 @@
       "type": "restaurant",
       "img": "https://b.zmtcdn.com/data/pictures/5/19415265/359aee412596fe7259a491fe460beb91_featured_v2.jpg",
       "address": " D S LaneBanglore",
-
       "rating": "3.8"
     }
   ],
-
   "Fooddata": [
     {
       "id": 1,
@@ -255,19 +237,7 @@
       "rating": "3.6",
       "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp"
     }
-  ]
-  ,
-  "cartitems":[
-    {
-      "id": 9,
-      "rname": "HL Frankie",
-      "imgdata": "https://b.zmtcdn.com/data/pictures/7/19639627/94c0a4cf15c02d3982d154e2c5dd8cbb_o2_featured_v2.jpg",
-      "address": "Burger, Sandwich, Fast Food",
-      " delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
-      "somedata": "2525 + order placed from here recently",
-      "price": 190,
-      "rating": "3.6",
-      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp"
-    }
-  ]
+  ],
+  "address": [],
+  "card": []
 }

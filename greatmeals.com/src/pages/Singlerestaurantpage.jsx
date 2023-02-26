@@ -180,7 +180,7 @@ const Globalstate = useContext(Cartcontext);
               onClick={() => dispatch({ type: "ADD", payload: Restaurant })}
               >
                 
-             Add To Cart
+           Book a Table
             </Button>
   
             <Stack direction="row" alignItems="center" justifyContent={'center'} pt={"10px"} >

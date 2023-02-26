@@ -1,3 +1,4 @@
+import { StarIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Circle,
@@ -46,9 +47,9 @@ function ProductCard({title, price, image, category, rat, id,quantity }) {
             bg={useColorModeValue("white", "gray.800")}
             w="230px"
             h={"350px"}
-            border="0.5px solid #F43397"
+            border="0.5px solid #d8f3dc"
             rounded="3PX"
-            p={"10px"}
+            p={"px"}
             //   shadow="sm"
           >
             {data.isNew && (
@@ -79,8 +80,8 @@ function ProductCard({title, price, image, category, rat, id,quantity }) {
                     colorScheme="#DDF2DC"
                     mb={"10px"}
                   >
-                    {category}
-                    {quantity}
+                 
+                  
                   </Badge>
                 )}
               </Box>
@@ -111,6 +112,7 @@ function ProductCard({title, price, image, category, rat, id,quantity }) {
                         h={7}
                         w={7}
                         alignSelf={"center"}
+                      
                       />
                     </chakra.a>
                   </Tooltip>
@@ -123,18 +125,27 @@ function ProductCard({title, price, image, category, rat, id,quantity }) {
                   border={"1px solid green"}
                   h={"35px"}
                   w={"60px"}
-                  fontSize={"xl"}
+                  pt="5px"
+                  fontSize={"lg"}
                   borderRadius={"10px"}
                   bgColor={"#23BB75"}
                   color={"white"}
+                
+                  
+                 
                 >
+                
                   {rat}
+                 
+                  < StarIcon h={3} w={3} alignSelf={'center'}  color="#fcec52"/>
+                 
                 </Box>
                 {/* <Rating rating={data.rating} numReviews={data.numReviews} rate={ProductCart.rat}/> */}
                 <Box
                   fontSize="md"
                   color={useColorModeValue("black")}
                   fontWeight={"bold"}
+                  pt="7px"
                 >
                   <Box as="span" color={'black'} fontSize="md" >
                 ₹

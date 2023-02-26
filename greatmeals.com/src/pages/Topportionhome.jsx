@@ -126,6 +126,15 @@ export default function VideoSl() {
             >
               GREAT REWARDS
             </Text>
+            <Text
+              fontSize={{ base: "lg", sm: "xl", md: "xl", lg: "2xl" }}
+              fontStyle="italic"
+              fontWeight="extrabold"
+           
+              color="#f6fff8"
+            >
+           "A recipe has no soul. You, as the cook, must bring soul to the recipe"
+            </Text>
             {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="1000px" position="relative">
               <Stack
